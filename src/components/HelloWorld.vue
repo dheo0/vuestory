@@ -1,11 +1,16 @@
 <script setup>
 import { ref } from 'vue'
+import CustomInput from './CustomInput.vue';
 
 defineProps({
   msg: String,
 })
 
 const count = ref(0)
+const message = ref(null)
+const sendMsg = () => {
+  console.log(message.value)
+}
 </script>
 
 <template>
@@ -18,7 +23,12 @@ const count = ref(0)
       <code>components/HelloWorld.vue</code> to test HMR
     </p>
   </div>
-
+  <CustomInput
+    v-model="message"
+  />
+  {{ message }}
+  <br>
+  <button @click="sendMsg">sendMsg</button>
   <p>
     Check out
     <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
@@ -33,7 +43,7 @@ const count = ref(0)
   <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .read-the-docs {
   color: #888;
 }
